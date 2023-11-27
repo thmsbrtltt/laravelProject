@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController; // <- WEBAPP addition
-
+use App\Http\Controllers\CategoryController; // <- part 1 addition
+use App\Http\Controllers\ItemController; //<- part 3 addition
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +24,7 @@ Route::get('/categories', [CategoryController::class, 'index']);  //added index 
 //part 2 additions
 Route::get('/categories/{id}/edit', [CategoryController::class, 'edit']);
 Route::patch('/categories/{id}', [CategoryController::class, 'update']);
+
+//part 3 additions
+Route::get('/itemsIndex/itemsCreate', [ItemController::class, 'create']);
+Route::post('/itemsIndex', [ItemController::class, 'store']);
