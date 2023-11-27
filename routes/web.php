@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/categories/create', [CategoryController::class, 'create']);
 Route::post('/categories', [CategoryController::class, 'store']); 
 Route::get('/categories', [CategoryController::class, 'index']);  //added index route
+
+//part 2 additions
+Route::get('/categories/{id}/edit', [CategoryController::class, 'edit']);
+Route::patch('/categories/{id}', [CategoryController::class, 'update']);

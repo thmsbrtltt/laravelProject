@@ -1,17 +1,29 @@
 @extends('layouts.app') 
 
 @section('content')
-    <h2>Categories</h2>
+ <h2>Categories</h2>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
-    <ul>
+<table>
+    <thead>
+        <tr>
+            <th>Category Name | </th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach($categories as $category)
-            <li>{{ $category->name }}</li>
+            <tr>
+                <td>{{ $category->name }}</td>
+                <td><a href="/categories/{{ $category->id }}/edit">Edit</a></td>
+            </tr>
         @endforeach
-    </ul>
-@endsection
+    </tbody>
+</table>
+
+<a href="/categories/create">Add New Category</a>
