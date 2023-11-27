@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController; // <- part 1 addition
-use App\Http\Controllers\ItemController; //<- part 3 addition
+use App\Http\Controllers\ItemController; //<- part 3
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,5 +26,5 @@ Route::get('/categories/{id}/edit', [CategoryController::class, 'edit']);
 Route::patch('/categories/{id}', [CategoryController::class, 'update']);
 
 //part 3 additions
-Route::get('/itemsIndex/itemsCreate', [ItemController::class, 'create']);
-Route::post('/itemsIndex', [ItemController::class, 'store']);
+Route::get('/items/create', [ItemController::class, 'create']);
+Route::post('/items', [ItemController::class, 'store']);

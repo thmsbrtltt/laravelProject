@@ -11,7 +11,7 @@ class ItemController extends Controller
     public function create(){
         $categories = Category::all();
 
-        return view('itemsIndex.itemsCreate', compact('categories'));
+        return view('items.create', compact('categories'));
     }
 
     public function store(Request $request){
@@ -38,7 +38,7 @@ class ItemController extends Controller
             'picture' => $picturePath,
         ]);
 
-        return redirect('/itemsIndex')->with('success', 'Item created successfully!');
+        return redirect('/items')->with('success', 'Item created successfully!');
     }
 }
 

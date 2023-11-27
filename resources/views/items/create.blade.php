@@ -6,12 +6,12 @@
     </div>
 @endif
 
-<form action="/itemsIndex" method="post" enctype="multipart/form-data">
+<form action="/items" method="post" enctype="multipart/form-data">
     @csrf
 
     <label for="category_id">Category:</label>
     <select name="category_id" id="category_id" required>
-
+        <!-- Populate with categories if needed -->
     </select>
 
     <label for="title">Title:</label>
