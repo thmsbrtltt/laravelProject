@@ -28,4 +28,4 @@ Route::patch('/categories/{id}', [CategoryController::class, 'update']);
 //part 3 additions
 Route::get('/items/create', [ItemController::class, 'create']);
 Route::post('/items', [ItemController::class, 'store']);
-Route::get('/items', [ItemController::class, 'index']);
+Route::get('/items', [ItemController::class, 'index']); //REMEMBER ->index
