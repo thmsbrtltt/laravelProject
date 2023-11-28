@@ -7,6 +7,22 @@
         display: block;
         margin-bottom: 5px;
     }
+
+    .form-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .form-table th,
+    .form-table td {
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .form-table th {
+        text-align: left;
+        background-color: #f2f2f2;
+    }
 </style>
 
 <h2>Create Item</h2>
@@ -17,57 +33,73 @@
     </div>
 @endif
 
-<form action="/items" method="post" enctype="multipart/form-data"> <!-- edit 9:03 am-->
+<form action="/items" method="post" enctype="multipart/form-data">
     @csrf
 
-    <!-- Category -->
-    <div class="form-group">
-        <label for="category_id">Category:</label>
-        <select name="category_id" id="category_id" class="form-control" required>
-            @foreach($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-            @endforeach
-        </select>
-    </div>
+    <table class="form-table">
+        <!-- Category -->
+        <tr>
+            <th><label for="category_id">Category:</label></th>
+            <td>
+                <select name="category_id" id="category_id" class="form-control" required>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                    @endforeach
+                </select>
+            </td>
+        </tr>
 
-    <!-- Title -->
-    <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title" value="{{ old('title') }}" required>
-        @error('title')
-            <p class="text-danger">{{ $message }}</p>
-        @enderror
-    </div>
+        <!-- Title -->
+        <tr>
+            <th><label for="title">Title:</label></th>
+            <td>
+                <input type="text" name="title" id="title" value="{{ old('title') }}" required>
+                @error('title')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </td>
+        </tr>
 
-    <!-- Description -->
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea name="description" id="description" class="form-control" required></textarea>
-    </div>
+        <!-- Description -->
+        <tr>
+            <th><label for="description">Description:</label></th>
+            <td>
+                <textarea name="description" id="description" class="form-control" required></textarea>
+            </td>
+        </tr>
 
-    <!-- Price -->
-    <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="number" name="price" id="price" class="form-control" required>
-    </div>
+        <!-- Price -->
+        <tr>
+            <th><label for="price">Price:</label></th>
+            <td>
+                <input type="number" name="price" id="price" class="form-control" required>
+            </td>
+        </tr>
 
-    <!-- Quantity -->
-    <div class="form-group">
-        <label for="quantity">Quantity:</label>
-        <input type="number" name="quantity" id="quantity" class="form-control" required>
-    </div>
+        <!-- Quantity -->
+        <tr>
+            <th><label for="quantity">Quantity:</label></th>
+            <td>
+                <input type="number" name="quantity" id="quantity" class="form-control" required>
+            </td>
+        </tr>
 
-    <!-- SKU -->
-    <div class="form-group">
-        <label for="sku">SKU:</label>
-        <input type="text" name="sku" id="sku" class="form-control" required>
-    </div>
+        <!-- SKU -->
+        <tr>
+            <th><label for="sku">SKU:</label></th>
+            <td>
+                <input type="text" name="sku" id="sku" class="form-control" required>
+            </td>
+        </tr>
 
-    <!-- Picture -->
-    <div class="form-group">
-        <label for="picture">Picture:</label>
-        <input type="file" name="picture" id="picture" class="form-control" required>
-    </div>
+        <!-- Picture -->
+        <tr>
+            <th><label for="picture">Picture:</label></th>
+            <td>
+                <input type="file" name="picture" id="picture" class="form-control" required>
+            </td>
+        </tr>
+    </table>
 
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary">Add Item</button>

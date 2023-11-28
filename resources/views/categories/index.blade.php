@@ -1,7 +1,33 @@
-@extends('layouts.app') 
+<style>
+    table {
+        border-collapse: collapse;
+    }
 
-@section('content')
- <h2>Categories</h2>
+    th, td {
+        padding: 4px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .alert {
+        margin-top: 10px;
+    }
+
+    .add-link {
+        margin-top: 10px;
+        padding: 4px;
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+    }
+</style>
+
+<h2>Categories</h2>
 
 @if(session('success'))
     <div class="alert alert-success">
@@ -12,7 +38,7 @@
 <table>
     <thead>
         <tr>
-            <th>Category Name | </th>
+            <th>Category Name</th>
             <th>Edit</th>
         </tr>
     </thead>
@@ -26,4 +52,4 @@
     </tbody>
 </table>
 
-<a href="/categories/create">Add New Category</a>
+<a href="/categories/create" class="add-link">Add New Category</a>
