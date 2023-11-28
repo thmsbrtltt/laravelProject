@@ -17,4 +17,9 @@ class Item extends Model
         'sku',
         'picture',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

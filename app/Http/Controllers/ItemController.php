@@ -28,7 +28,7 @@ class ItemController extends Controller
         //image handling
         $picturePath = $request->file('picture')->store('images', 'public');
         
-        Item::create([ 
+        $item = Item::create([ 
             'category_id' => $request->input('category_id'),
             'title' => $request->input('title'),
             'description' => $request->input('description'),
@@ -37,6 +37,10 @@ class ItemController extends Controller
             'sku' => $request->input('sku'),
             'picture' => $picturePath,
         ]);
+
+        //new addition - 9:42pm
+        $category = Category::find($request->input('category_id'));
+        $category->items()->save($item);
 
         return redirect('/items')->with('success', 'Item created successfully!');
     }
