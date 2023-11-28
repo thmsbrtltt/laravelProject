@@ -4,8 +4,8 @@
     @csrf
     @method('PATCH')
 
-    <label for="name">Category Name:</label>
-    <input type="text" name="name" id="name" value="{{ $category->name }}" required>
+    <label for="category_name">Category Name:</label>
+    <input type="text" name="category_name" id="category_name" value="{{ $category->category_name }}" required>
 
     <button type="submit">Update Category</button>
 </form>

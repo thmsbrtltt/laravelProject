@@ -12,9 +12,9 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate(['name' => 'required|unique:categories|max:255',]);
+        $request->validate(['category_name' => 'required|unique:categories|max:255',]);
     
-        Category::create(['name' => $request->input('name'),]);
+        Category::create(['category_name' => $request->input('category_name'),]);
 
         return redirect('/categories')->with('success', 'Category created successfully!');
     }
@@ -32,7 +32,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id){
 
-        $request->validate(['name' => 'required|unique:categories|max:255',]);
+        $request->validate(['category_name' => 'required|unique:categories|max:255',]);
     
         $category = Category::find($id);
 
@@ -40,7 +40,7 @@ class CategoryController extends Controller
             return redirect('/categories')->with('error', 'Category not found');
         }
 
-        $category->update(['name' => $request->input('name'),]);
+        $category->update(['category_name' => $request->input('category_name'),]);
     
         return redirect('/categories')->with('success', 'Category update successful!');
     }
