@@ -18,7 +18,13 @@ class ItemController extends Controller
 
     // -> STORE FUNCTION
     public function store(Request $request){
-
+     
+        if (empty($request->input('title'))) {
+           
+            $message = 'Custom field cannot be empty';
+            return redirect()->back()->with('custom_error', $message);
+        }
+       
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',

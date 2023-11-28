@@ -33,6 +33,12 @@
     </div>
 @endif
 
+@if(session('custom_error'))
+    <div class="alert alert-danger">
+        {{ session('custom_error') }}
+    </div>
+@endif
+
 <form action="/items" method="post" enctype="multipart/form-data">
     @csrf
 
@@ -50,55 +56,72 @@
         </tr>
 
         <!-- Title -->
-        <tr>
-            <th><label for="title">Title:</label></th>
-            <td>
-                <input type="text" name="title" id="title" value="{{ old('title') }}" required>
-                @error('title')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
-            </td>
-        </tr>
+        <!-- Title -->
+<tr>
+    <th><label for="title">Title:</label></th>
+    <td>
+        <input type="text" name="title" id="title" value="{{ old('title') }}" required>
+        @error('title')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+    </td>
+</tr>
 
-        <!-- Description -->
-        <tr>
-            <th><label for="description">Description:</label></th>
-            <td>
-                <textarea name="description" id="description" class="form-control" required></textarea>
-            </td>
-        </tr>
+<!-- Description -->
+<tr>
+    <th><label for="description">Description:</label></th>
+    <td>
+        <textarea name="description" id="description" class="form-control" required></textarea>
+        @error('description')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+    </td>
+</tr>
 
-        <!-- Price -->
-        <tr>
-            <th><label for="price">Price:</label></th>
-            <td>
-                <input type="number" name="price" id="price" class="form-control" required>
-            </td>
-        </tr>
+<!-- Price -->
+<tr>
+    <th><label for="price">Price:</label></th>
+    <td>
+        <input type="number" name="price" id="price" class="form-control" required>
+        @error('price')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+    </td>
+</tr>
 
-        <!-- Quantity -->
-        <tr>
-            <th><label for="quantity">Quantity:</label></th>
-            <td>
-                <input type="number" name="quantity" id="quantity" class="form-control" required>
-            </td>
-        </tr>
+<!-- Quantity -->
+<tr>
+    <th><label for="quantity">Quantity:</label></th>
+    <td>
+        <input type="number" name="quantity" id="quantity" class="form-control" required>
+        @error('quantity')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+    </td>
+</tr>
 
-        <!-- SKU -->
-        <tr>
-            <th><label for="sku">SKU:</label></th>
-            <td>
-                <input type="text" name="sku" id="sku" class="form-control" required>
-            </td>
-        </tr>
+<!-- SKU -->
+<tr>
+    <th><label for="sku">SKU:</label></th>
+    <td>
+        <input type="text" name="sku" id="sku" class="form-control" required>
+        @error('sku')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+    </td>
+</tr>
 
-        <!-- Picture -->
-        <tr>
-            <th><label for="picture">Picture:</label></th>
-            <td>
-                <input type="file" name="picture" id="picture" class="form-control" required>
-            </td>
-        </tr>
+<!-- Picture -->
+<tr>
+    <th><label for="picture">Picture:</label></th>
+    <td>
+        <input type="file" name="picture" id="picture" class="form-control" required>
+        @error('picture')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+    </td>
+</tr>
+
     </table>
 
     <!-- Submit Button -->
