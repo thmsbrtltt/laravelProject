@@ -15,6 +15,7 @@ class ItemController extends Controller
     }
 
     public function store(Request $request){
+
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',
@@ -43,6 +44,13 @@ class ItemController extends Controller
         $category->items()->save($item);
 
         return redirect('/items')->with('success', 'Item created successfully!');
+    }
+
+    //REMEMBER -> index function
+    public function index()
+    {
+        $items = Item::all();
+        return view('items.index', compact('items'));
     }
 }
 

@@ -17,7 +17,7 @@
     </div>
 @endif
 
-<form action="/items" method="post" enctype="multipart/form-data">
+<form action="/items" method="post" enctype="multipart/form-data"> <!-- edit 9:03 am-->
     @csrf
 
     <!-- Category -->
