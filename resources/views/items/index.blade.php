@@ -10,7 +10,7 @@
     }
 
     th {
-        background-color: #f2f2f2;
+        background-color: #d3d3d3;
     }
 
     .alert {
@@ -20,7 +20,7 @@
     .add-link {
         margin-top: 10px;
         padding: 4px;
-        background-color: #4CAF50;
+        background-color: #a3a3a3;
         color: white;
         text-align: center;
         text-decoration: none;
@@ -33,18 +33,32 @@
     <thead>
         <tr>
             <th>Item Master List</th>
-
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($items as $items)
+        @foreach($items as $item)
             <tr>
-                <td>{{ $items->title }}</td>
-                <td><a href="/items/{{ $items->id }}/edit">Edit</a></td>
-                <td><a href="/items/{{ $items->id }}/edit">Delete</a></td>
+                <td>{{ $item->title }}</td>
+                <td>
+                    <a href="/items/{{ $item->id }}/edit">Edit</a>
+                    <a href="#" onclick="confirmDelete({{ $item->id }})">Delete</a>
+                    <form id="delete-form-{{ $item->id }}" action="/items/{{ $item->id }}" method="post" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                </td>
             </tr>
         @endforeach
     </tbody>
 </table>
 
 <a href="/items/create" class="add-link">Add New Item</a>
+
+<script>
+    function confirmDelete(itemId) {
+        if (confirm("Are you sure you want to delete this item?")) {
+            document.getElementById(`delete-form-${itemId}`).submit();
+        }
+    }
+</script>
