@@ -23,6 +23,12 @@
         text-align: left;
         background-color: #f2f2f2;
     }
+
+    #image-preview {
+        max-width: 100%;
+        max-height: 200px;
+        margin-top: 10px;
+    }
 </style>
 
 <h2>Create Item</h2>
@@ -116,6 +122,7 @@
     <th><label for="picture">Picture:</label></th>
     <td>
         <input type="file" name="picture" id="picture" class="form-control" required>
+        <img id="image-preview" src="#" alt="Image Preview" style="display: none;">
         @error('picture')
             <p class="text-danger">{{ $message }}</p>
         @enderror
@@ -127,3 +134,21 @@
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary">Add Item</button>
 </form>
+
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('image-preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
